@@ -1,0 +1,7 @@
+{
+  "name": "dm-distribution",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
