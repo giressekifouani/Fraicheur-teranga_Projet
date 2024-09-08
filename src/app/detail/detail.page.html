@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Details du panier</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()" style="color: red;">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-grid>
+    <ion-row>
+      <ion-col><strong>Nom</strong></ion-col>
+      <ion-col><strong>Description</strong></ion-col>
+      <ion-col><strong>Prix(FCFA)</strong></ion-col>
+      <ion-col><strong>Quantité</strong></ion-col>
+      <ion-col><strong>Actions</strong></ion-col>
+    </ion-row>
+    <ion-row *ngFor="let item of cartItems">
+      <ion-col>{{ item.title }}</ion-col>
+      <ion-col>{{ item.content }}</ion-col>
+      <ion-col>{{ item.price }}</ion-col>
+      <ion-col>{{ item.quantity }}</ion-col>
+      <ion-col>
+        <ion-button (click)="removeItem(item.id)" fill="clear" color="danger">
+          <ion-icon name="trash"></ion-icon>
+        </ion-button>
+      </ion-col>
+
+    </ion-row>
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col><strong>Total:</strong></ion-col>
+      <ion-col><strong>{{ totalPrice }}</strong></ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-footer>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button class="btn btn-primary" (click)="confirmer()">Confirmer commande</ion-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button class="btn btn-danger" (click)="annuler()">Annuler</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>
+</ion-content>

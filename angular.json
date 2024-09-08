@@ -31,8 +31,8 @@
                 "output": "./svg"
               }
             ],
-            "styles": ["src/global.scss", "src/theme/variables.scss"],
-            "scripts": []
+            "styles": ["src/global.scss", "src/theme/variables.scss", "node_modules/bootstrap/dist/css/bootstrap.min.css", "node_modules/swiper/swiper-bundle.min.css"],
+            "scripts": ["node_modules/swiper/swiper-bundle.min.js"]
           },
           "configurations": {
             "production": {
@@ -111,8 +111,8 @@
                 "output": "./svg"
               }
             ],
-            "styles": ["src/global.scss", "src/theme/variables.scss"],
-            "scripts": []
+            "styles": ["src/global.scss", "src/theme/variables.scss", "node_modules/swiper/swiper-bundle.min.css"],
+            "scripts": ["node_modules/swiper/swiper-bundle.min.js"]
           },
           "configurations": {
             "ci": {
@@ -136,7 +136,8 @@
   "cli": {
     "schematicCollections": [
       "@ionic/angular-toolkit"
-    ]
+    ],
+    "analytics": "3a27ac51-8bd8-437e-9486-3e80d824fe77"
   },
   "schematics": {
     "@ionic/angular-toolkit:component": {

@@ -1,0 +1,213 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="transparent-toolbar">
+    <ion-title>
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="assets/image/DM+.jpg" alt="Logo" width="130" height="80" style="border-radius: 100px;">
+        </a>
+      </div>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openCartModal()">
+        <ion-icon name="cart" style="font-size : 40px"></ion-icon>
+        <ion-badge *ngIf="cartItemsCount > 0">{{ cartItemsCount }}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+  
+    </ion-toolbar>
+    <div class="popver">
+      <ion-searchbar placeholder="Rechercher un produit"  (ionInput)="filterItems($event)"> <ion-button [(ngModel)]="searchTerm"></ion-button> </ion-searchbar>
+
+    </div>
+</ion-header>
+
+<ion-content>
+  <!-- Slider -->
+  <!--<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button *ngFor="let slide of slides; let i = index" type="button" data-bs-target="#carouselExampleDark" [attr.data-bs-slide-to]="i" [class.active]="i === 0" [attr.aria-current]="i === 0 ? 'true' : null" [attr.aria-label]="'Slide ' + (i + 1)"></button>
+    </div>
+    <div class="carousel-inner">
+      <div *ngFor="let slide of slides; let i = index" class="carousel-item" [class.active]="i === 0">
+        <img [src]="slide.img" class="d-block w-100" [alt]="'Slide ' + (i + 1)" width="800" height="600">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>{{ slide.title }}</h5>
+          <p>{{ slide.content }}</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>-->
+
+   <!-- Slider -->
+   <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button *ngFor="let slide of slides; let i = index" type="button" data-bs-target="#carouselExampleDark" 
+              [attr.data-bs-slide-to]="i" [class.active]="i === 0" [attr.aria-current]="i === 0 ? 'true' : null" 
+              [attr.aria-label]="'Slide ' + (i + 1)">
+      </button>
+    </div>
+    <div class="carousel-inner">
+      <div *ngFor="let slide of slides; let i = index" class="carousel-item" [class.active]="i === 0">
+        <img [src]="slide.img" class="d-block w-100" [alt]="'Slide ' + (i + 1)" width="800" height="600">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>{{ slide.title }}</h5>
+          <p>{{ slide.content }}</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+
+   <!-- Barre de recherche 
+   <ion-searchbar placeholder="Rechercher un produit"  (ionInput)="filterItems($event)"> <ion-button [(ngModel)]="searchTerm"></ion-button> </ion-searchbar>-->
+   <ion-grid>
+    <ion-item lines="none" color="light">
+      <ion-label class="title">A la une</ion-label>
+      <ion-button slot="end" size="small" shape="round" color="primary">Voir</ion-button>
+    </ion-item>
+    <ion-row *ngIf="filteredItems.length > 0">
+      <!--<ion-col size="12" size-md="6" size-lg="4" *ngFor="let item of filteredItems" (click)="addToCart(item)">-->
+        <ion-col size="12" size-md="6" size-lg="3" *ngFor="let item of filteredItems.slice(0, 4)" (click)="OpenImgModal()">
+        <ion-card class="contenu">
+          <img [src]="item.img" [alt]="item.title" class="zoom-image"/>
+          <ion-card-header>
+            <!--<ion-card-title>{{ item.title }}</ion-card-title>
+            <ion-card-subtitle>{{ item.price }}</ion-card-subtitle>-->
+            <div class="carousel-caption d-none d-md-block">
+              <h5>{{ item.title }}</h5>
+              <p>{{ item.content }}</p>
+              <button>Shop now ></button>
+            </div>
+          </ion-card-header>
+
+        </ion-card>
+      </ion-col>
+
+
+      <ion-row *ngIf="filteredItems.length > 0">
+        <ion-col size="6" size-md="4" size-lg="3" *ngFor="let item of filteredItems.slice(0, 4)" (click)="OpenImgModal()">
+          <ion-card class="contenu">
+            <img [src]="item.img" [alt]="item.title" class="zoom-image" />
+            <ion-card-header>
+              <div class="carousel-caption d-none d-md-block">
+                <h5>{{ item.title }}</h5>
+                <p>{{ item.content }}</p>
+                <button>Shop now ></button>
+              </div>
+            </ion-card-header>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
+      
+      
+    </ion-row>
+    <ion-row *ngIf="filteredItems.length === 0" class="error-message">
+      <ion-col>
+        <p>Aucun produit trouvé.</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row *ngIf="filteredItems.length > 0">
+      
+        <ion-col size="12" size-md="6" size-lg="4" *ngFor="let item of filteredItems.slice(0, 15)" (click)="addToCart(item)">
+        <ion-card>
+          <img [src]="item.img" [alt]="item.title" />
+          <ion-card-header>
+            <ion-card-title>{{ item.title }}</ion-card-title>
+            <ion-card-subtitle>{{ item.price }}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            {{ item.content }}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="filteredItems.length === 0" class="error-message">
+      <ion-col>
+        <p>Aucun produit trouvé.</p>
+      </ion-col>
+    </ion-row>
+
+    <!--<ion-footer >
+  <ion-toolbar>
+    <ion-title style="text-align: center; font-size: 15px;">DM+ © 2024</ion-title>
+    <ion-buttons slot="end">
+      <ion-button href="www.sites.google.com/view/giresse-kifouani" style="font-size: 10px;">By Giresse M.K</ion-button>
+      
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>-->
+  </ion-grid>
+
+  <ion-grid class="icon-margin-top">
+    <ion-item lines="none" color="light">
+      <ion-label class="title">A la une</ion-label>
+      <ion-button slot="end" size="small" shape="round" color="primary">Voir</ion-button>
+    </ion-item>
+    <ion-row>
+      <!--<ion-slides [options]="slideOpts">
+        <ion-slide *ngFor="let item of items"></ion-slide>
+        <ion-card class="bgCard" [routerLink]="['/', 'tabs', 'item', item.id]">
+          <ion-card-header>
+            <ion-label>{{item.title}}</ion-label>
+          </ion-card-header>
+        </ion-card>
+      </ion-slides>-->
+
+      <!--<ion-slides [options]="slideOpts">
+        <ion-slide *ngFor="let slide of items">
+          <ion-card class="bgCard" [routerLink]="['/', 'tabs', 'item', slide.id]">
+            <img [src]="slide.img" class="d-block w-100" [alt]="slide.title" width="800" height="600">
+            <ion-card-header>
+              <ion-card-title>{{ slide.title }}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              {{ slide.content }}
+            </ion-card-content>
+          </ion-card>
+        </ion-slide>
+      </ion-slides>-->
+
+      <ion-slides [options]="slideOpts">
+        <ion-slide *ngFor="let slide of items">
+          <ion-card class="bgCard" [routerLink]="['/', 'tabs', 'item', slide.id]">
+            <ion-card-header>
+              <ion-label>
+                {{ slide.title }}
+                <p>{{ slide.price}}</p>
+              </ion-label>
+            </ion-card-header>
+            <ion-card-content>
+              <img [src]="slide.img" />
+            </ion-card-content>
+          </ion-card>
+        </ion-slide>
+      </ion-slides>
+    </ion-row>
+  </ion-grid>
+
+
+
+</ion-content>
+
+

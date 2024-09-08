@@ -1,0 +1,60 @@
+<!--<ion-header>
+  <ion-toolbar>
+    <ion-title>{{item.title}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">fermer</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img [src]="item.img" />
+    <ion-card-header>
+      <ion-card-subtitle>{{item.subtitle}}</ion-card-subtitle>
+      <ion-card-title>{{item.title}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{item.content}}</p>
+      <p>{{item.price}} FCFA</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>-->
+
+<!--<div class="">
+<img [src]="item.img" height="90" width="90" class="image" />
+<div class="contenu">
+  <p>{{item.content}}</p>
+  <p>{{item.price}} FCFA</p>
+</div>
+</div>-->
+
+<!--<button slot="end">
+  <button (click)="openCartModal()">
+    <button *ngIf="cartItemsCount > 0">{{ cartItemsCount }}</button>
+  </button>
+</button>-->
+
+<div class="wrapper">
+  <div class="text-center mt-4 name">
+      {{item.title}}
+  </div>
+
+  <div class="p-3 mt-3">
+      
+        <img [src]="item.img" height="200" width="200" class="image" />
+        <div class="contenu">
+          <p>{{item.content}}</p>
+          <p>{{item.price}} FCFA</p>
+        </div>
+
+        <!--<div class="btn"> 
+          <button name="remove" (click)="decreaseQuantity(item)" style="color: rgb(255, 254, 254); font-size: 15px" class="btn2">-</button>
+          <span (click)="addToCart(item)" style="color: rgb(34, 30, 30); font-size: 17px">{{ item.quantity || 0 }}</span>      
+          <button name="add" (click)="increaseQuantity(item)" (click)="addToCart(item)" style="color: rgb(255, 255, 255); font-size: 15px" class="btn1">+</button>        
+        </div>-->
+        
+      <button (click)="close()" class="btn btn-danger" >Ferme</button>
+  </div>
+
+</div>

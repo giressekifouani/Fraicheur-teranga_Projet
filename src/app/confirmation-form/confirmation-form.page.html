@@ -1,0 +1,60 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Confirmation de la commande</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()" style="color: red;">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <h3>Veuillez vous identifier</h3>
+    <ion-item>
+      <ion-label position="stacked">Nom</ion-label>
+      <ion-input [(ngModel)]="name" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Numéro téléphone</ion-label>
+      <ion-input [(ngModel)]="phone" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Adresse</ion-label>
+      <ion-input [(ngModel)]="adresse" required></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-grid>
+    <h3>Recapitulatif de commande</h3>
+    <ion-row>
+      <ion-col><strong>Nom</strong></ion-col>
+      <ion-col><strong>Description</strong></ion-col>
+      <ion-col><strong>Prix (FCFA)</strong></ion-col>
+      <ion-col><strong>Quantité</strong></ion-col>
+    </ion-row>
+    <ion-row *ngFor="let item of cartItems">
+      <ion-col>{{ item.title }}</ion-col>
+      <ion-col>{{ item.content }}</ion-col>
+      <ion-col>{{ item.price }}</ion-col>
+      <ion-col>{{ item.quantity }}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col><strong>Total:</strong></ion-col>
+      <ion-col><strong>{{ totalPrice }} </strong></ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-footer>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button class="btn btn-confirm" (click)="submitForm()">Confirmer commande</ion-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button class="btn btn-danger" (click)="closeModal()">Annuler</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>
+</ion-content>

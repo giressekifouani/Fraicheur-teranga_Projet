@@ -1,0 +1,37 @@
+<!--<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>ItemDescriptionModal</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">ItemDescriptionModal</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</ion-content>-->
+
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{item.title}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">fermer</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img [src]="item.img" />
+    <ion-card-header>
+      <ion-card-subtitle>{{item.subtitle}}</ion-card-subtitle>
+      <ion-card-title>{{item.title}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{item.content}}</p>
+      <p>{{item.price}} FCFA</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

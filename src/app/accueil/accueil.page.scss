@@ -1,0 +1,196 @@
+.card1{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px 2em;
+}
+
+ion-content{
+    --background: linear-gradient(0deg, rgba(240, 233, 233, 0.7), rgba(0,0,0,0.1)), url("/assets/image/Fraise6.jpg") no-repeat center center / cover;
+   // margin-bottom: 280px;
+   /*display: flex;
+   flex-direction: column;
+   justify-content: space-between;*/
+}
+
+/*ion-header{
+    background-image: url("/assets/images/font-tete.png");
+}*/
+
+.prof{
+    padding-left: 1000px;
+}
+
+.active-item{
+    border-left: 2px solid var(--ion-color-primary);
+  }
+
+ /* table{
+    margin-bottom: 20px;
+    //padding-right: 100px;
+  }*/
+
+ /* ion-split-pane{
+    padding-right: 1000px;
+  }*/
+
+  ion-footer {
+  //position: fixed;
+   position: relative;
+    bottom: 0;
+    width: 100%;
+    z-index: 10;
+    margin-bottom: 90px;
+    //margin-top: 200px;*/
+  }
+
+  ion-grid{
+    padding-bottom: 0px;
+  }
+
+  .error-message {
+    background-color: #ffcccc; /* Fond rouge clair */
+    padding: 10px; /* Espacement intérieur */
+    border: 1px solid #ff6666; /* Bordure rouge */
+    border-radius: 5px; /* Coins arrondis */
+
+    padding-top: 50px;
+  }
+
+/*zoom-image{
+  width: 100%;
+  transition: transform 0.9s ease;
+}*/
+
+/*contenu:hover .zoom-image{
+  transform: scale(1.2);
+}*/
+
+
+
+.zoom-image {
+  width: 100%;
+  height: auto;
+  transition: transform 0.2s;
+}
+
+.zoom-image:hover {
+  transform: scale(1.1);
+}
+
+.contenu {
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-caption {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #ff6600;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #ff4500;
+}
+
+
+
+.swiper-container {
+  width: 100%;
+  height: 400px; /* Adjust height as needed */
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  flex-direction: column; /* Align items vertically */
+  justify-content: center;
+  align-items: center;
+}
+
+
+.zoom-image {
+  width: 100%;
+  transition: transform 0.5s ease; /* Smooth transition for the zoom effect */
+}
+
+.swiper-slide:hover .zoom-image {
+  transform: scale(1.2); /* Scale the image to 1.2 times its original size */
+}
+
+
+ion-content{
+  --background: var(--ion-color-light);
+  .title{
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--ion-color-dark);
+  }
+  ion-slides{
+    ion-card{
+      height: 30vh;
+      width: 300%;
+      border-radius: 10px;
+      ion-card-header{
+        ion-label, p{
+          font-weight: bold;
+          font-size: 1rem;
+          color: var(--ion-color-dark);
+        }
+      }
+      ion-card-content{
+        img{
+          height: 20vh;
+        }
+      }
+    }
+    .bgCard{
+      //background-image: url();
+      background-position: fixed;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+}
+
+.popver{
+  ion-searchbar{
+    --border-radius: 20px;
+  }
+}
+
+ion-header{
+  border-radius: 20px;
+  background-color: #68A32E;
+}
+
+ion-toolbar{
+  background-color: #68A32E;
+}
+
+.transparent-toolbar {
+  --background: transparent;
+  /* Si vous voulez une couleur spécifique, utilisez:
+  --background: #yourColor;
+  */
+}
+
+.transparent-toolbar .container {
+  background-color: transparent;
+}
+

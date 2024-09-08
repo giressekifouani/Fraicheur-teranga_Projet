@@ -1,0 +1,60 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="transparent-toolbar">
+    <ion-title>
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="assets/image/DM+.jpg" alt="Logo" width="130" height="80" style="border-radius: 100px;">
+        </a>
+      </div>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openCartModal()">
+        <ion-icon name="cart" style="font-size : 40px"></ion-icon>
+        <ion-badge *ngIf="cartItemsCount > 0">{{ cartItemsCount }}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+  
+    </ion-toolbar>
+    <div class="popver">
+      <ion-searchbar placeholder="Rechercher un produit"  (ionInput)="filterItems($event)"> <ion-button [(ngModel)]="searchTerm"></ion-button> </ion-searchbar>
+
+    </div>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-grid>
+    <ion-item lines="none" color="light">
+      <ion-label class="title">Les Fruits</ion-label>
+    </ion-item>
+    <ion-row *ngIf="filteredItems.length > 0" class="margin-bottom">  
+        <ion-col size="6" size-md="4" size-lg="3" size-xl="2" *ngFor="let item of filteredItems.slice(0, 18)">
+        <ion-card >
+          <img [src]="item.img" [alt]="item.title" (click)="OpenDescriptionModal(item)" />
+          <ion-card-header>
+            <ion-card-title>{{ item.title }}</ion-card-title>
+            <ion-card-subtitle>{{ item.price }} FCFA</ion-card-subtitle>
+          </ion-card-header>
+    
+          <div class="btn">
+ 
+            <button name="remove" (click)="decreaseQuantity(item)" style="color: rgb(255, 254, 254); font-size: 15px" class="btn2">-</button>
+            <span (click)="addToCart(item)" style="color: rgb(34, 30, 30); font-size: 17px">{{ item.quantity || 0 }}</span>
+        
+            <button name="add" (click)="increaseQuantity(item)" (click)="addToCart(item)" style="color: rgb(255, 255, 255); font-size: 15px" class="btn1">+</button>
+            <!--<button (click)="addToCart(item)" style="text-align: center; ">Ajouter</button>-->
+          </div>   
+          <!--<ion-icon name="chevron-forward-circle"  class="btnIcon" (click)="OpenDescriptionModal(item)"></ion-icon>-->                    
+        </ion-card>
+      
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="filteredItems.length === 0" class="error-message">
+      <ion-col>
+        <p>Aucun produit trouvé.</p>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>

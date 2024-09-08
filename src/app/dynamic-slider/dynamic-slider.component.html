@@ -1,0 +1,7 @@
+<ion-slides  pager="true" [options]="slideOpts">
+  <ion-slide *ngFor="let slide of slides">
+    <img [src]="slide.img" />
+    <h2>{{ slide.title }}</h2>
+    <p>{{ slide.content }}</p>
+  </ion-slide>
+</ion-slides>
